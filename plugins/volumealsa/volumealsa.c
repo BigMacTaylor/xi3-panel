@@ -958,12 +958,8 @@ static GtkWidget *volumealsa_constructor(LXPanel *panel, config_setting_t *setti
 #endif
     if (config_setting_lookup_string(settings, "MuteButton", &tmp_str))
         vol->mute_click = panel_config_click_parse(tmp_str, &vol->mute_click_mods);
-    else
-        vol->mute_click = 2; /* middle-click default */
     if (config_setting_lookup_string(settings, "SliderButton", &tmp_str))
         vol->slider_click = panel_config_click_parse(tmp_str, &vol->slider_click_mods);
-    else
-        vol->slider_click = 1; /* left-click default */
     if (config_setting_lookup_string(settings, "MixerButton", &tmp_str))
         vol->mixer_click = panel_config_click_parse(tmp_str, &vol->mixer_click_mods);
     if (config_setting_lookup_string(settings, "VolumeUpKey", &tmp_str))
@@ -1457,12 +1453,12 @@ static GtkWidget *volumealsa_configure(LXPanel *panel, GtkWidget *p)
 
     /* setup buttons */
     if (!config_setting_lookup_string(vol->settings, "SliderButton", &tmp_str))
-        tmp_str = "1";
+        tmp_str = NULL;
     volume_button = panel_config_click_button_new(_("Click for Volume Slider"), tmp_str);
     gtk_widget_set_tooltip_text(volume_button, _("Click to select, then press a mouse button"));
     g_signal_connect(volume_button, "changed", G_CALLBACK(volume_button_changed), vol);
     if (!config_setting_lookup_string(vol->settings, "MuteButton", &tmp_str))
-        tmp_str = "2";
+        tmp_str = NULL;
     mute_button = panel_config_click_button_new(_("Click for Toggle Mute"), tmp_str);
     gtk_widget_set_tooltip_text(mute_button, _("Click to select, then press a mouse button"));
     g_signal_connect(mute_button, "changed", G_CALLBACK(mute_button_changed), vol);

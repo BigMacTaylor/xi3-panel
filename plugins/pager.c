@@ -68,7 +68,8 @@ static void on_size_allocate(GtkWidget *p, GdkRectangle *allocation, LXPanel *pa
     on_realize(p, panel);
 }
 
-/* static gboolean on_scroll_event(GtkWidget * p, GdkEventScroll * ev, LXPanel *panel)
+/*  ## ToDo add setting toggle to activate/deactivate
+static gboolean on_scroll_event(GtkWidget * p, GdkEventScroll * ev, LXPanel *panel)
 {
     int desknum = get_net_current_desktop();
     int desks = get_net_number_of_desktops();
