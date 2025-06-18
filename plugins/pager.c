@@ -68,6 +68,7 @@ static void on_size_allocate(GtkWidget *p, GdkRectangle *allocation, LXPanel *pa
     on_realize(p, panel);
 }
 
+/*  ## ToDo add setting toggle to activate/deactivate
 static gboolean on_scroll_event(GtkWidget * p, GdkEventScroll * ev, LXPanel *panel)
 {
     int desknum = get_net_current_desktop();
@@ -90,7 +91,7 @@ static gboolean on_scroll_event(GtkWidget * p, GdkEventScroll * ev, LXPanel *pan
 
     Xclimsgx(xscreen, RootWindowOfScreen(xscreen), a_NET_CURRENT_DESKTOP, desknum, 0, 0, 0, 0);
     return TRUE;
-}
+} */
 
 #if GTK_CHECK_VERSION(3, 0, 0)
 static void on_style_updated(GtkWidget *p, LXPanel *panel)
@@ -145,7 +146,7 @@ static GtkWidget *pager_constructor(LXPanel *panel, config_setting_t *settings)
     /* we cannot configure pager until it added into widgets hierarchy */
     g_signal_connect(p, "realize", G_CALLBACK(on_realize), panel);
     g_signal_connect(p, "size-allocate", G_CALLBACK(on_size_allocate), panel);
-    g_signal_connect(p, "scroll-event", G_CALLBACK(on_scroll_event), panel);
+    /* g_signal_connect(p, "scroll-event", G_CALLBACK(on_scroll_event), panel); */
 
 #if GTK_CHECK_VERSION(3, 0, 0)
     g_signal_connect(p, "style-updated", G_CALLBACK(on_style_updated), panel);
